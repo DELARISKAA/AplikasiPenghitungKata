@@ -239,29 +239,39 @@ public class PenghitungKata extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Mengambil teks dari JTextArea
-        String inputText = text.getText().trim();
+       // Mengambil teks dari JTextArea
+String inputText = text.getText().trim();
 
-        // Menghitung jumlah kata
-        String[] words = inputText.split("\\s+");
-        int wordCount = words.length;
+// Jika tidak ada teks yang diinput, set hasil ke nol
+if (inputText.isEmpty()) {
+    jTextField1.setText("0"); // Jumlah kata
+    jTextField2.setText("0"); // Jumlah karakter
+    jTextField3.setText("0"); // Jumlah paragraf
+    jTextField4.setText("0"); // Jumlah kalimat
+    JOptionPane.showMessageDialog(null, "Isi Text terlebih Dahulu", "Gagal", JOptionPane.WARNING_MESSAGE);
+} else {
+    // Menghitung jumlah kata
+    String[] words = inputText.split("\\s+");
+    int wordCount = words.length;
 
-        // Menghitung jumlah karakter (termasuk spasi)
-        int charCount = inputText.length();
+    // Menghitung jumlah karakter (termasuk spasi)
+    int charCount = inputText.length();
 
-        // Menghitung jumlah paragraf (menghitung baris kosong sebagai pemisah paragraf)
-        String[] paragraphs = inputText.split("\\n+");
-        int paragraphCount = paragraphs.length;
+    // Menghitung jumlah paragraf (menghitung baris kosong sebagai pemisah paragraf)
+    String[] paragraphs = inputText.split("\\n+");
+    int paragraphCount = paragraphs.length;
 
-        // Menghitung jumlah kalimat (menggunakan tanda titik, tanda seru, atau tanda tanya sebagai pemisah kalimat)
-        String[] sentences = inputText.split("[.!?]");
-        int sentenceCount = sentences.length;
+    // Menghitung jumlah kalimat (menggunakan tanda titik, tanda seru, atau tanda tanya sebagai pemisah kalimat)
+    String[] sentences = inputText.split("[.!?]");
+    int sentenceCount = sentences.length;
 
-        // Menampilkan hasil pada JLabel
-        jTextField1.setText(" " + wordCount);
-        jTextField2.setText(" " + charCount);
-        jTextField3.setText(" " + paragraphCount);
-        jTextField4.setText(" " + sentenceCount);
+    // Menampilkan hasil pada JTextField
+    jTextField1.setText("" + wordCount);
+    jTextField2.setText("" + charCount);
+    jTextField3.setText("" + paragraphCount);
+    jTextField4.setText("" + sentenceCount);
+}
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
